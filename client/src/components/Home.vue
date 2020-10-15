@@ -1,33 +1,14 @@
 <template>
-  <div class="cardWrapper" v-bind:style="{ backgroundImage: 'url(' + bgImage + ')' }">
+  <div class="cardWrapper" :style="{ backgroundImage: 'url(' + bgImage + ')' }">
     <div class="cardInner">
-      <template>
-        <div class="row">
-          <form >
-            <div   class="inputField">
-              <label for='front'>Front</label>
-              <input @focus="updateCover" isFront="true" id='front' v-model="data.front"/>
-            </div>
-            <div   class="inputField" >
-              <label for='back'>Back</label>
-              <textarea @focus="updateCover"  id='back' v-model="data.back"/>
-            </div>
-          </form>
-          <div>
-            <div v-if="showingFront" v-bind:style="{backgroundImage: 'url('+ chocoCover.front +')', height: '283px', width: '688px'}">
-              <p style="padding: 20%; display: block"><strong>{{data.front ? data.front : 'Aquí irá tu texto de prueba'}}</strong></p>
-            </div>
-            <div v-else v-bind:style="{backgroundImage: 'url('+ chocoCover.back +')', height: '283px', width: '688px'}">
-              <p style="padding: 20%; display: block"><strong>{{data.back ? data.back : 'PARTE DE ATRAS'}}</strong></p>
-            </div>
-          </div>
-        </div>
-      </template>
+     <ChocoForm/>
     </div>
   </div>
 </template>
 
 <script>
+import ChocoForm from './ChocoForm'
+
 export default {
   name: 'Home',
   data () {
@@ -43,14 +24,10 @@ export default {
       chocoCover: {
         front: require('../assets/chocoCoverFront.jpg'),
         back: require('../assets/chocoCoverBack.jpg')
-      },
-      updateCover: (e) => {
-        console.log(e.currentTarget.getAttribute('isFront'))
-        if (!!e.currentTarget.getAttribute('isFront') === true) this.showingFront = true
-        else this.showingFront = false
       }
     }
-  }
+  },
+  components: {ChocoForm}
 }
 </script>
 
@@ -60,10 +37,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.inputField {
-  padding: 5px;
-  margin: 5px;
 }
 .cardWrapper {
   display: flex;
