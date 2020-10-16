@@ -1,21 +1,22 @@
  <template>
   <div class="row">
-    <form >
+    <form @submit.prevent='checkSubmit'>
       <div class="inputField">
         <label for='front'>Front</label>
-        <input @focus="updateCover" isFront="true" id='front' v-model="data.front"/>
+        <input @keydown.enter.prevent='changeInput' @focus="updateCover" maxlength="100" isFront="true" id='front' v-model="chocobarText.front"/>
       </div>
       <div class="inputField" >
         <label for='back'>Back</label>
-        <textarea @focus="updateCover" isFront=""  id='back' v-model="data.back"/>
+        <textarea @focus="updateCover" maxlength="200" isFront=""  id='back' v-model="chocobarText.back"/>
       </div>
+      <button>SUBMIT</button>
     </form>
     <div>
-      <div v-if="showingFront" :style="{backgroundImage: 'url('+ chocoCover.front +')', height: '283px', width: '688px'}">
-        <p style="padding: 20%; display: block"><strong>{{data.front ? data.front : 'Aquí irá tu texto de prueba'}}</strong></p>
+      <div class='bar' v-if="showingFront" :style="{backgroundImage: 'url('+ chocoCover.front +')' }">
+        <p>{{chocobarText.front ? chocobarText.front : 'Aquí irá tu texto de prueba'}}</p>
       </div>
-      <div v-else :style="{backgroundImage: 'url('+ chocoCover.back +')', height: '283px', width: '688px'}">
-        <p style="padding: 20%; display: block"><strong>{{data.back ? data.back : 'PARTE DE ATRAS'}}</strong></p>
+      <div class='bar' v-else :style="{backgroundImage: 'url('+ chocoCover.back +')' }" >
+        <p><strong>{{chocobarText.back ? chocobarText.back : 'PARTE DE ATRAS'}}</strong></p>
       </div>
     </div>
   </div>
@@ -26,13 +27,11 @@ export default {
   name: 'ChocoForm',
   data () {
     return {
-      data: {
+      chocobarText: {
         front: '',
         back: ''
       },
       showingFront: true,
-      frontText: 'Introduce here the front text',
-      backText: 'Here goes the backtext, make it big!',
       chocoCover: {
         front: require('../assets/chocoCoverFront.jpg'),
         back: require('../assets/chocoCoverBack.jpg')
@@ -40,9 +39,20 @@ export default {
     }
   },
   methods: {
+    isFormFilled () {
+      return this.chocobarText.front !== '' && this.chocobarText.back !== ''
+    },
+    checkSubmit () {
+      if (this.isFormFilled()) this.$store.commit('fillingChocoBar', this.$data.chocobarText)
+      else alert('Tu tableta no está completa!')
+    },
     updateCover (e) {
       if (!!e.currentTarget.getAttribute('isFront') === true) this.showingFront = true
       else this.showingFront = false
+    },
+    changeInput (e) {
+      //  TO-DO improve ad-hoc solution
+      e.currentTarget.parentElement.nextElementSibling.querySelectorAll('textArea')[0].focus()
     }
   }
 }
@@ -59,6 +69,20 @@ export default {
   padding: 5px;
   margin: 5px;
 }
+.bar {
+  height: 283px;
+  width: 688px;
+}
+
+.bar p {
+  max-width: 500px;
+  height: 90px;
+  word-wrap: break-word;
+  padding: 13% 13% 22%;
+  display: block;
+  line-height: 1.2em;
+  font-size: 1.2em;
+}
 h1, h2 {
   font-weight: normal;
 }
@@ -72,5 +96,9 @@ li {
 }
 a {
   color: #42b983;
+}
+
+textarea {
+  height: 80px;
 }
 </style>
