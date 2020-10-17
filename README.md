@@ -16,7 +16,7 @@ Live version:
 https://chocobar-test.herokuapp.com/
 
 Endpoints
-GET index - https://chocobar-test.herokuapp.com/        - Nothing to see here yet
-GET edit  - https://chocobar-test.herokuapp.com/edit    - This is where the magic happens
-GET api   - https://chocobar-test.herokuapp.com/api/    - Access to the api
-GET POST chocobar - https://chocobar-test.herokuapp.com/api/chocobar/   
+- GET index - https://chocobar-test.herokuapp.com/        - Nothing to see here yet
+- GET edit  - https://chocobar-test.herokuapp.com/edit    - This is where the magic happens
+- GET api   - https://chocobar-test.herokuapp.com/api/    - Access to the api
+- GET POST chocobar - https://chocobar-test.herokuapp.com/api/chocobar/   
