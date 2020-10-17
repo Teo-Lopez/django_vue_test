@@ -7,7 +7,7 @@ class ChocobarService {
     this.service = axios.create({
       timeout: 10000,
       withCredentials: true,
-      baseURL: 'http://127.0.0.1:8000/api'
+      baseURL: 'https://chocobar-test.herokuapp.com/api'
       // baseURL: "https://stark-bastion-02104.herokuapp.com/"
     })
   }
