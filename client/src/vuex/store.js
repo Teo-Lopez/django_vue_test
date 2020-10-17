@@ -21,6 +21,7 @@ export default new Vuex.Store({
       state.chocobarText = payload
     },
     postChocobar () {
+      console.log('sending text')
       const chocoService = new ChocobarService()
       chocoService.sendText().then(x => console.log(x))
     }
