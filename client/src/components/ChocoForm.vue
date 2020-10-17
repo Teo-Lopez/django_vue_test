@@ -43,8 +43,10 @@ export default {
       return this.chocobarText.front !== '' && this.chocobarText.back !== ''
     },
     checkSubmit () {
-      if (this.isFormFilled()) this.$store.commit('fillingChocoBar', this.$data.chocobarText)
-      else alert('Tu tableta no está completa!')
+      if (this.isFormFilled()) {
+        this.$store.commit('fillingChocobar', this.$data.chocobarText)
+        this.$store.commit('postChocobar', this.$data.chocobarText)
+      } else alert('Tu tableta no está completa!')
     },
     updateCover (e) {
       if (!!e.currentTarget.getAttribute('isFront') === true) this.showingFront = true

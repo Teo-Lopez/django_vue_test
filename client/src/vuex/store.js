@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import ChocobarService from '../services/ChocobarText.service.js'
 
 Vue.use(Vuex)
 
@@ -15,9 +16,13 @@ export default new Vuex.Store({
     increment (state) {
       state.count++
     },
-    fillingChocoBar (state, payload) {
+    fillingChocobar (state, payload) {
       alert('committing to global store')
       state.chocobarText = payload
+    },
+    postChocobar () {
+      const chocoService = new ChocobarService()
+      chocoService.sendText().then(x => console.log(x))
     }
   }
 })
