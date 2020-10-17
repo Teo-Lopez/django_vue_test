@@ -6,11 +6,7 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request):
-<<<<<<< HEAD
-    return render(request, 'index.html', locals())
-=======
     return render(request, 'index.html', locals())
 
 def error(req):
     return render(req, 'error.html', locals())
->>>>>>> master
