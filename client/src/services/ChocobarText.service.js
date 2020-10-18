@@ -12,9 +12,11 @@ class ChocobarService {
     })
   }
 
-  sendText () {
+  sendText (textObj) {
+    const {front, back} = textObj
+    console.log(front, back)
     return this.service
-      .post('/chocobar/', {front: 'test1', back: 'test1'})
+      .post('/chocobar/', {front, back})
       .then(res => res)
       .catch(err => err)
   }

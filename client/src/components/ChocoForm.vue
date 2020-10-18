@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     isFormFilled () {
-      return this.chocobarText.front !== '' && this.chocobarText.back !== ''
+      return this.$data.chocobarText.front !== '' && this.$data.chocobarText.back !== ''
     },
     checkSubmit () {
       if (this.isFormFilled()) {
