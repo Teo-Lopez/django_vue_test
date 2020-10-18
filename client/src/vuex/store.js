@@ -6,24 +6,25 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    count: 0,
     chocobarText: {
       front: '',
       back: ''
     }
   },
   mutations: {
-    increment (state) {
-      state.count++
-    },
     fillingChocobar (state, payload) {
       alert('committing to global store')
       state.chocobarText = payload
     },
+<<<<<<< HEAD
     postChocobar () {
       console.log('sending text')
+=======
+    postChocobar (state, payload) {
+      const {front, back} = payload
+>>>>>>> master
       const chocoService = new ChocobarService()
-      chocoService.sendText().then(x => console.log(x))
+      chocoService.sendText({front, back}).then(x => console.log(x))
     }
   }
 })
