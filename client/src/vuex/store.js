@@ -21,5 +21,10 @@ export default new Vuex.Store({
       const chocoService = new ChocobarService()
       chocoService.sendText({front, back}).then(x => console.log(x))
     }
+  },
+  getters: {
+    chocobarText (state) {
+      return state.chocobarText
+    }
   }
 })
