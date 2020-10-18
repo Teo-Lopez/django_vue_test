@@ -1,5 +1,5 @@
 <template>
-  <h1>Filled in view</h1>
+  <h1>Gracias por la visita :)</h1>
 </template>
 
 <script>
