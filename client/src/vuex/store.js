@@ -16,13 +16,8 @@ export default new Vuex.Store({
       alert('committing to global store')
       state.chocobarText = payload
     },
-<<<<<<< HEAD
-    postChocobar () {
-      console.log('sending text')
-=======
     postChocobar (state, payload) {
       const {front, back} = payload
->>>>>>> master
       const chocoService = new ChocobarService()
       chocoService.sendText({front, back}).then(x => console.log(x))
     }
