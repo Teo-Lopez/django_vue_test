@@ -1,26 +1,56 @@
 <template>
   <div class="cardWrapper" :style="{ backgroundImage: 'url(' + bgImage + ')' }">
     <div class="cardInner">
-     <ChocoForm/>
+      <ChocoForm :closeForm="closeForm"/>
+      <Modal v-if="showModal">
+        <h4>¡Tu tableta se verá así!</h4>
+        <div>
+          <div class='bar' :style="{backgroundImage: 'url('+ chocoCover.front +')' }">
+            <p>{{completedBar.front}}</p>
+          </div>
+          <div class='bar' :style="{backgroundImage: 'url('+ chocoCover.back +')' }" >
+            <p>{{completedBar.back}}</p>
+          </div>
+          <router-link class='link' to='/filled'>Tercera página</router-link>
+        </div>
+      </Modal>
     </div>
   </div>
 </template>
 
 <script>
 import ChocoForm from '../components/ChocoForm'
+import Modal from '../slots/Modal'
 
 export default {
   name: 'ChocoView',
   data () {
     return {
+      showModal: false,
       bgImage: screen.width > 2000 ? require('../assets/womenInField_2400x1800.jpg') : require('../assets/womenInField_1920x1440.jpg'),
       chocoCover: {
         front: require('../assets/chocoCoverFront.jpg'),
         back: require('../assets/chocoCoverBack.jpg')
+      },
+      completedBar: {
+        front: '',
+        back: ''
       }
     }
   },
-  components: {ChocoForm}
+  methods: {
+    closeForm () {
+      this.toggleModal()
+      this.completeBar()
+    },
+    toggleModal () {
+      this.$data.showModal = !this.$data.showModal
+    },
+    completeBar () {
+      this.$data.completedBar = this.$store.getters.chocobarText
+    }
+  },
+  components: {ChocoForm, Modal}
 }
 </script>
 
@@ -45,6 +75,20 @@ export default {
   padding: 20px;
   color: white;
   width: 50%;
+}
+.bar {
+  height: 283px;
+  width: 688px;
+}
+
+.bar p {
+  max-width: 500px;
+  height: 90px;
+  word-wrap: break-word;
+  padding: 13% 13% 22%;
+  display: block;
+  line-height: 1.2em;
+  font-size: 1.2em;
 }
 h1, h2 {
   font-weight: normal;

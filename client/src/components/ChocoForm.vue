@@ -25,6 +25,7 @@
 <script>
 export default {
   name: 'ChocoForm',
+  props: ['closeForm'],
   data () {
     return {
       chocobarText: {
@@ -46,6 +47,7 @@ export default {
       if (this.isFormFilled()) {
         this.$store.commit('fillingChocobar', this.$data.chocobarText)
         this.$store.commit('postChocobar', this.$data.chocobarText)
+        this.closeForm()
       } else alert('Tu tableta no está completa!')
     },
     updateCover (e) {
