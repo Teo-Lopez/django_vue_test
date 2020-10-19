@@ -27,7 +27,7 @@ export default {
   data () {
     return {
       showModal: false,
-      bgImage: screen.width > 2000 ? require('../assets/womenInField_2400x1800.jpg') : require('../assets/womenInField_1920x1440.jpg'),
+      bgImage: screen.width > 2000 ? require('../assets/background@x2.png') : require('../assets/background.png'),
       chocoCover: {
         front: require('../assets/chocoCoverFront.jpg'),
         back: require('../assets/chocoCoverBack.jpg')
