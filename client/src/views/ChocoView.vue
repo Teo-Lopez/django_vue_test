@@ -5,10 +5,10 @@
       <Modal v-if="showModal">
         <h4>¡Tu tableta se verá así!</h4>
         <div>
-          <div class='bar' :style="{backgroundImage: 'url('+ chocoCover.front +')' }">
+          <div class='bar' :style="{backgroundImage: 'url('+ chocoCover.front +')', backgroundSize: 'cover'  }">
             <p>{{completedBar.front}}</p>
           </div>
-          <div class='bar' :style="{backgroundImage: 'url('+ chocoCover.back +')' }" >
+          <div class='bar' :style="{backgroundImage: 'url('+ chocoCover.back +')', backgroundSize: 'cover'  }" >
             <p>{{completedBar.back}}</p>
           </div>
           <router-link class='link' to='/filled'>Tercera página</router-link>
