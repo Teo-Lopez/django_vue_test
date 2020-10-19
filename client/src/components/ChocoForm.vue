@@ -12,10 +12,10 @@
       <button>SUBMIT</button>
     </form>
     <div>
-      <div class='bar' v-if="showingFront" :style="{backgroundImage: 'url('+ chocoCover.front +')' }">
+      <div class='bar' v-if="showingFront" :style="{backgroundImage: 'url('+ chocoCover.front +')', backgroundSize: 'cover' }">
         <p>{{chocobarText.front ? chocobarText.front : 'Aquí irá tu texto de prueba'}}</p>
       </div>
-      <div class='bar' v-else :style="{backgroundImage: 'url('+ chocoCover.back +')' }" >
+      <div class='bar' v-else :style="{backgroundImage: 'url('+ chocoCover.back +')', backgroundSize: 'cover'}" >
         <p><strong>{{chocobarText.back ? chocobarText.back : 'PARTE DE ATRAS'}}</strong></p>
       </div>
     </div>
